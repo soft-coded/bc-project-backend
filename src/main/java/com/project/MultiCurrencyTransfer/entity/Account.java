@@ -11,7 +11,7 @@ public class Account {
   private String holderName;
   private String type; // savings or current or something else
   private int userId; // id of the user that created the account
-  private long balance;
+  private double balance;
   private String currency; // home currency of the account
 
   public Account() {
@@ -68,11 +68,11 @@ public class Account {
     this.userId = userId;
   }
 
-  public long getBalance() {
+  public double getBalance() {
     return balance;
   }
 
-  public void setBalance(long balance) {
+  public void setBalance(double balance) {
     this.balance = balance;
   }
 
