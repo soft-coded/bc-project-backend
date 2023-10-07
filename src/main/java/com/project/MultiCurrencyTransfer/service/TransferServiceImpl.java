@@ -1,10 +1,12 @@
 package com.project.MultiCurrencyTransfer.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.MultiCurrencyTransfer.entity.Transfer;
 import com.project.MultiCurrencyTransfer.repository.TransferRepository;
 
+@Service
 public class TransferServiceImpl implements ITransferService {
   @Autowired
   TransferRepository tr;
