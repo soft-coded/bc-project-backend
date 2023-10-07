@@ -5,6 +5,6 @@ import com.project.MultiCurrencyTransfer.entity.Account;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 @Repository
-public interface AccountRepository extends MongoRepository<Account, Integer> {
+public interface AccountRepository extends MongoRepository<Account, String> {
 
 }

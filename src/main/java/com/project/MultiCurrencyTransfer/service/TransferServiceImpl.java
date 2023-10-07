@@ -12,7 +12,7 @@ public class TransferServiceImpl implements ITransferService {
   TransferRepository tr;
 
   @Override
-  public Transfer getTransferById(int id) {
+  public Transfer getTransferById(String id) {
     return tr.findById(id).get();
   }
 

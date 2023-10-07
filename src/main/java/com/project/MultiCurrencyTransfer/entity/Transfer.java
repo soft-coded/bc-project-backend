@@ -6,20 +6,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "transfers")
 public class Transfer {
   @Id
-  private int transferId;
+  private String transferId;
   private String senderAccountNumber;
   private double senderAmount;
   private String senderCurrency;
   private String receiverAccountNumber;
   private double receiverAmount;
   private String receiverCurrency;
-  private int userId; // id of the user that made the transfer
+  private String userId; // id of the user that made the transfer
 
   public Transfer() {
   }
 
-  public Transfer(int transferId, String senderAccountNumber, double senderAmount, String senderCurrency,
-      String receiverAccountNumber, double receiverAmount, String receiverCurrency, int userId) {
+  public Transfer(String transferId, String senderAccountNumber, double senderAmount, String senderCurrency,
+      String receiverAccountNumber, double receiverAmount, String receiverCurrency, String userId) {
     this.transferId = transferId;
     this.senderAccountNumber = senderAccountNumber;
     this.senderAmount = senderAmount;
@@ -30,11 +30,11 @@ public class Transfer {
     this.userId = userId;
   }
 
-  public int getTransferId() {
+  public String getTransferId() {
     return transferId;
   }
 
-  public void setTransferId(int transferId) {
+  public void setTransferId(String transferId) {
     this.transferId = transferId;
   }
 
@@ -86,11 +86,11 @@ public class Transfer {
     this.receiverCurrency = receiverCurrency;
   }
 
-  public int getUserId() {
+  public String getUserId() {
     return userId;
   }
 
-  public void setUserId(int userId) {
+  public void setUserId(String userId) {
     this.userId = userId;
   }
 
