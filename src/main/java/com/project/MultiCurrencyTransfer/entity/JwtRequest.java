@@ -1,10 +1,5 @@
 package com.project.MultiCurrencyTransfer.entity;
 
-//import lombok.*;
-
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class JwtRequest {
     String email;
     String password;
