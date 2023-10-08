@@ -1,5 +1,7 @@
 package com.project.MultiCurrencyTransfer.services.account;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,10 @@ public class AccountServiceImpl implements IAccountService {
   @Override
   public Account updateAccount(Account acc) {
     return accRepo.save(acc);
+  }
+
+  @Override
+  public List<Account> getAccountsByUserId(String userId) {
+    return accRepo.findByUserId(userId);
   }
 }
