@@ -1,6 +1,8 @@
 package com.project.MultiCurrencyTransfer.controller;
+
 import com.project.MultiCurrencyTransfer.entity.User;
-import com.project.MultiCurrencyTransfer.service.UserService;
+import com.project.MultiCurrencyTransfer.service.user.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>>getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 

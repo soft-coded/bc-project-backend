@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.service;
+package com.project.MultiCurrencyTransfer.service.transfer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

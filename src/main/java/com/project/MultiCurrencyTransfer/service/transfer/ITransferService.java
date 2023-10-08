@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.service;
+package com.project.MultiCurrencyTransfer.service.transfer;
 
 import com.project.MultiCurrencyTransfer.entity.Transfer;
 
