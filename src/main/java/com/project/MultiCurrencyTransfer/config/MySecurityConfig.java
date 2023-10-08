@@ -1,6 +1,5 @@
 package com.project.MultiCurrencyTransfer.config;
 
-import com.project.MultiCurrencyTransfer.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +14,11 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.project.MultiCurrencyTransfer.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
-
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -51,7 +50,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    //over
+    // over
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService);
@@ -66,7 +65,5 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-
 
 }

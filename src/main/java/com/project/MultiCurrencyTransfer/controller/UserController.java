@@ -1,7 +1,7 @@
 package com.project.MultiCurrencyTransfer.controller;
 
 import com.project.MultiCurrencyTransfer.entity.User;
-import com.project.MultiCurrencyTransfer.service.user.UserService;
+import com.project.MultiCurrencyTransfer.services.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

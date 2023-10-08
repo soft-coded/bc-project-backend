@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.service;
+package com.project.MultiCurrencyTransfer.services;
 
 import com.project.MultiCurrencyTransfer.entity.CustomUserDetails;
 import com.project.MultiCurrencyTransfer.entity.User;
@@ -25,7 +25,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         } else {
             return new CustomUserDetails(user);
         }
-
 
     }
 }

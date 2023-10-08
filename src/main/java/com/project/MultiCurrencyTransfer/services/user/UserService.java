@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.service.user;
+package com.project.MultiCurrencyTransfer.services.user;
 
 import com.project.MultiCurrencyTransfer.entity.User;
 

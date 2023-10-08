@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.MultiCurrencyTransfer.entity.Transfer;
-import com.project.MultiCurrencyTransfer.service.transfer.ITransferService;
+import com.project.MultiCurrencyTransfer.services.transfer.ITransferService;
 
 @RestController
 @CrossOrigin(origins = "*")

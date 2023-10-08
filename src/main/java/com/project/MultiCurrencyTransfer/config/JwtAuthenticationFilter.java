@@ -1,7 +1,8 @@
 package com.project.MultiCurrencyTransfer.config;
 
 import com.project.MultiCurrencyTransfer.helper.JwtUtil;
-import com.project.MultiCurrencyTransfer.service.CustomUserDetailsService;
+import com.project.MultiCurrencyTransfer.services.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class JwtAuthenticationFilter  extends OncePerRequestFilter {
-
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -27,56 +27,48 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
-        //get jwt
-        //Bearer
-        //validate
+        // get jwt
+        // Bearer
+        // validate
         String requestTokenHeader = request.getHeader("Authorization");
-        String username=null;
-        String jwtToken=null;
+        String username = null;
+        String jwtToken = null;
 
-        //null and format
-        if(requestTokenHeader!=null && requestTokenHeader.startsWith("Bearer "))
-        {
-            jwtToken=requestTokenHeader.substring(7);
+        // null and format
+        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+            jwtToken = requestTokenHeader.substring(7);
 
-            try{
+            try {
 
                 username = this.jwtUtil.getUsernameFromToken(jwtToken);
 
-
-            }catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            if(username!=null && SecurityContextHolder.getContext().getAuthentication()==null)
-            {
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
-                //security
+                // security
 
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
 
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-
-                usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                usernamePasswordAuthenticationToken
+                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
-
-            }else
-            {
+            } else {
                 System.out.println("Token is not validated..");
             }
 
-
-
-
         }
 
-
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
 
     }
 }
