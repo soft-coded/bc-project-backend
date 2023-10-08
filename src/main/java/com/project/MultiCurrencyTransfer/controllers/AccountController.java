@@ -34,6 +34,7 @@ public class AccountController {
   }
 
   @GetMapping("of-user") // /api/v1/account/of-user
+  // the request body only needs to contain the userId
   public ResponseEntity<List<Account>> getAccountsOfUser(@RequestBody Account acc) {
     return new ResponseEntity<>(accService.getAccountsByUserId(acc.getUserId()), HttpStatus.OK);
   }
