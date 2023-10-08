@@ -28,7 +28,7 @@ public class AccountController {
     return new ResponseEntity<>(accService.getAccountById(id), HttpStatus.OK);
   }
 
-  @PostMapping
+  @PostMapping("new")
   public ResponseEntity<Account> newAccount(@RequestBody Account acc) {
     return new ResponseEntity<>(accService.newAccount(acc), HttpStatus.CREATED);
   }
