@@ -1,5 +1,7 @@
 package com.project.MultiCurrencyTransfer.services.transfer;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,10 @@ public class TransferServiceImpl implements ITransferService {
   @Override
   public Transfer newTransfer(Transfer t) {
     return tr.save(t);
+  }
+
+  @Override
+  public List<Transfer> getTransfersByUserId(String userId) {
+    return tr.findByUserId(userId);
   }
 }
