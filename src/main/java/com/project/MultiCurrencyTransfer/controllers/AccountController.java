@@ -34,7 +34,7 @@ public class AccountController {
   }
 
   @GetMapping("of-user") // /api/v1/account/of-user
-  public ResponseEntity<List<Account>> getAccountsOfUser(@RequestBody String userId) {
-    return new ResponseEntity<>(accService.getAccountsByUserId(userId), HttpStatus.OK);
+  public ResponseEntity<List<Account>> getAccountsOfUser(@RequestBody Account acc) {
+    return new ResponseEntity<>(accService.getAccountsByUserId(acc.getUserId()), HttpStatus.OK);
   }
 }
