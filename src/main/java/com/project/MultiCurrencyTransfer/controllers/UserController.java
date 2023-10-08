@@ -1,6 +1,6 @@
-package com.project.MultiCurrencyTransfer.controller;
+package com.project.MultiCurrencyTransfer.controllers;
 
-import com.project.MultiCurrencyTransfer.entity.User;
+import com.project.MultiCurrencyTransfer.entities.User;
 import com.project.MultiCurrencyTransfer.services.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

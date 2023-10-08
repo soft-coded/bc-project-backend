@@ -1,8 +1,9 @@
 package com.project.MultiCurrencyTransfer.services;
 
-import com.project.MultiCurrencyTransfer.entity.CustomUserDetails;
-import com.project.MultiCurrencyTransfer.entity.User;
-import com.project.MultiCurrencyTransfer.repository.UserRepository;
+import com.project.MultiCurrencyTransfer.entities.CustomUserDetails;
+import com.project.MultiCurrencyTransfer.entities.User;
+import com.project.MultiCurrencyTransfer.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,6 +1,6 @@
 package com.project.MultiCurrencyTransfer.config;
 
-import com.project.MultiCurrencyTransfer.helper.JwtUtil;
+import com.project.MultiCurrencyTransfer.helpers.JwtUtil;
 import com.project.MultiCurrencyTransfer.services.CustomUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;

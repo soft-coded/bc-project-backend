@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.entity;
+package com.project.MultiCurrencyTransfer.entities;
 
 public class JwtRequest {
     String email;

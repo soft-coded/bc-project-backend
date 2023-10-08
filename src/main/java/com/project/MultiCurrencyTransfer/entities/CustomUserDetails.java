@@ -1,4 +1,4 @@
-package com.project.MultiCurrencyTransfer.entity;
+package com.project.MultiCurrencyTransfer.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

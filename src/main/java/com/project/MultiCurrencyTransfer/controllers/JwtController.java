@@ -1,8 +1,8 @@
-package com.project.MultiCurrencyTransfer.controller;
+package com.project.MultiCurrencyTransfer.controllers;
 
-import com.project.MultiCurrencyTransfer.entity.JwtRequest;
-import com.project.MultiCurrencyTransfer.entity.JwtResponse;
-import com.project.MultiCurrencyTransfer.helper.JwtUtil;
+import com.project.MultiCurrencyTransfer.entities.JwtRequest;
+import com.project.MultiCurrencyTransfer.entities.JwtResponse;
+import com.project.MultiCurrencyTransfer.helpers.JwtUtil;
 import com.project.MultiCurrencyTransfer.services.CustomUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
