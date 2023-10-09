@@ -2,8 +2,10 @@ package com.project.MultiCurrencyTransfer.controllers;
 
 import com.project.MultiCurrencyTransfer.entities.JwtRequest;
 import com.project.MultiCurrencyTransfer.entities.JwtResponse;
+import com.project.MultiCurrencyTransfer.entities.User;
 import com.project.MultiCurrencyTransfer.helpers.JwtUtil;
 import com.project.MultiCurrencyTransfer.services.CustomUserDetailsService;
+import com.project.MultiCurrencyTransfer.services.user.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,9 @@ public class JwtController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("token")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
@@ -52,9 +57,10 @@ public class JwtController {
         String token = this.jwtUtil.generateToken(userDetails);
         System.out.println("JWT " + token);
 
-        // {"token":"value"}
+        User user = userService.getUserByEmail(jwtRequest.getEmail());
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity
+                .ok(new JwtResponse(token, user.getUserId(), user.getEmail(), user.getFirstName(), user.getLastName()));
 
     }
 }
