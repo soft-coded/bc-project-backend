@@ -1,5 +1,5 @@
 package com.project.MultiCurrencyTransfer.controllers;
-
+import com.project.MultiCurrencyTransfer.repositories.UserRepository;
 import com.project.MultiCurrencyTransfer.entities.User;
 import com.project.MultiCurrencyTransfer.services.user.UserService;
 
@@ -27,5 +27,14 @@ public class UserController {
         System.out.println(user);
         return new ResponseEntity<>(userService.registerUser(user), HttpStatus.CREATED);
     }
+
+    // PUT - update more than one property
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
+        updatedUser.setUserId(id);
+        User u = userService.updateUser(updatedUser);
+        return ResponseEntity.ok(u);
+    }
+
 
 }
