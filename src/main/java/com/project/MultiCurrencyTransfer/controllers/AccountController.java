@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,5 +49,11 @@ public class AccountController {
   @GetMapping("{id}")
   public ResponseEntity<Account> getAccountById(@PathVariable String id) {
     return new ResponseEntity<>(accService.getAccountById(id), HttpStatus.OK);
+  }
+
+  @DeleteMapping("{id}")
+  public ResponseEntity<?> deleteAccountById(@PathVariable String id) {
+    accService.deleteAccount(id);
+    return new ResponseEntity<>(null, HttpStatus.OK);
   }
 }

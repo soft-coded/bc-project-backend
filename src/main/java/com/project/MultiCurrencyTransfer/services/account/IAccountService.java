@@ -9,7 +9,7 @@ public interface IAccountService {
 
   Account newAccount(Account acc);
 
-  void deleteAccount(Account acc);
+  void deleteAccount(String id);
 
   Account updateAccount(Account acc);
 

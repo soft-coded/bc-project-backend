@@ -14,8 +14,8 @@ public class AccountServiceImpl implements IAccountService {
   private AccountRepository accRepo;
 
   @Override
-  public void deleteAccount(Account acc) {
-    accRepo.delete(acc);
+  public void deleteAccount(String id) {
+    accRepo.deleteById(id);
   }
 
   @Override
