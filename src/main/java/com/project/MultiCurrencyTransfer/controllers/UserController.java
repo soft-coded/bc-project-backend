@@ -1,5 +1,6 @@
 package com.project.MultiCurrencyTransfer.controllers;
 
+import com.project.MultiCurrencyTransfer.entities.Account;
 import com.project.MultiCurrencyTransfer.repositories.UserRepository;
 import com.project.MultiCurrencyTransfer.entities.User;
 import com.project.MultiCurrencyTransfer.services.user.UserService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -36,8 +38,13 @@ public class UserController {
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         updatedUser.setUserId(id);
         User u = userService.updateUser(updatedUser);
+        System.out.println(updatedUser);
         return ResponseEntity.ok(u);
     }
 
-
+    //    Get user based on ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<User>> getUserById(@PathVariable String id) {
+        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+    }
 }

@@ -39,6 +39,7 @@ class MultiCurrencyTransferApplicationTests {
     //    Happens before each test
     @BeforeEach
     public void setUp() {
+        userRepository.deleteAll();
         baseUrl = "http://localhost:" + port + "/api/v1/user/";
     }
 
