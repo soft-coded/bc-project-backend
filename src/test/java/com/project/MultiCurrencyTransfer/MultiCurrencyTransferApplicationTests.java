@@ -52,7 +52,7 @@ class MultiCurrencyTransferApplicationTests {
     //    Test to get All Users
     @Test
     public void testGetAllUsers() {
-        User user1 = new User("malaii.llama@example.com", "Malai", "Llama", "password222");
+        User user1 = new User("malay.llama@example.com", "Malay", "Llama", "password222");
         User user2 = new User("bhupendra.jogi@example.com", "Bhupendra", "Jogi", "password123");
 
         User savedUser1 = userRepository.save(user1);
@@ -64,8 +64,9 @@ class MultiCurrencyTransferApplicationTests {
         User[] users = responseEntity.getBody();
         Assertions.assertNotNull(users);
         Assertions.assertEquals(2, users.length);
-        Assertions.assertEquals("bhupendra.jogi@example.com", savedUser2.getEmail());
-        Assertions.assertEquals("Bhupendra", savedUser2.getFirstName());
+        Assertions.assertEquals("bhupendra.jogi@example.com", users[1].getEmail());
+        Assertions.assertEquals("Bhupendra", users[1].getFirstName());
+        Assertions.assertEquals("Llama", users[0].getLastName());
     }
 
     //    Test to create a new user
@@ -88,12 +89,7 @@ class MultiCurrencyTransferApplicationTests {
         User savedUser = userRepository.save(user);
 
         savedUser.setFirstName("UpdatedMalaya");
-        ResponseEntity<User> responseEntity = restTemplate.exchange(
-                baseUrl + savedUser.getUserId(),
-                HttpMethod.PUT,
-                new HttpEntity<>(savedUser),
-                User.class
-        );
+        ResponseEntity<User> responseEntity = restTemplate.exchange(baseUrl + savedUser.getUserId(), HttpMethod.PUT, new HttpEntity<>(savedUser), User.class);
 
         Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         User updatedUser = responseEntity.getBody();
@@ -105,22 +101,34 @@ class MultiCurrencyTransferApplicationTests {
     //    Test to update User Email
     @Test
     public void testUpdateUserEmail() {
-        User user = new User("malaii.llama@example.com", "Malai", "Llama", "password222");
+        User user = new User("rajmehta@example.com", "Raj", "Mehta", "password222");
         User savedUser = userRepository.save(user);
 
-        savedUser.setEmail("malai.updated@example.com");
-        ResponseEntity<User> responseEntity = restTemplate.exchange(
-                baseUrl + savedUser.getUserId(),
-                HttpMethod.PUT,
-                new HttpEntity<>(savedUser),
-                User.class
-        );
+        savedUser.setEmail("updatedrajmalay@example.com");
+        ResponseEntity<User> responseEntity = restTemplate.exchange(baseUrl + savedUser.getUserId(), HttpMethod.PUT, new HttpEntity<>(savedUser), User.class);
 
         Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         User updatedUser = responseEntity.getBody();
         Assertions.assertNotNull(updatedUser);
         Assertions.assertEquals(savedUser.getUserId(), updatedUser.getUserId());
-        Assertions.assertEquals("malai.updated@example.com", updatedUser.getEmail());
+        Assertions.assertEquals("updatedrajmalay@example.com", updatedUser.getEmail());
+    }
+
+    //    Test to get User by id
+    @Test
+    public void testGetUserById() {
+        User user = new User("bhavesh.attri@example.com", "Bhavesh", "Attri", "password123");
+        User savedUser = userRepository.save(user);
+
+        ResponseEntity<User> responseEntity = restTemplate.getForEntity(baseUrl + savedUser.getUserId(), User.class);
+
+        Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        User userReceived = responseEntity.getBody();
+
+        Assertions.assertNotNull(userReceived);
+        Assertions.assertEquals("bhavesh.attri@example.com", userReceived.getEmail());
+        Assertions.assertEquals("Bhavesh", userReceived.getFirstName());
+        Assertions.assertEquals("Attri", userReceived.getLastName());
     }
 
 
