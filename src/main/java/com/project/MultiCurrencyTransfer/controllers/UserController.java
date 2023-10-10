@@ -1,4 +1,5 @@
 package com.project.MultiCurrencyTransfer.controllers;
+
 import com.project.MultiCurrencyTransfer.repositories.UserRepository;
 import com.project.MultiCurrencyTransfer.entities.User;
 import com.project.MultiCurrencyTransfer.services.user.UserService;
@@ -17,18 +18,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //    Controller Mapping to get all users
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+    //    Controller Mapping for register
     @PostMapping("register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         System.out.println(user);
         return new ResponseEntity<>(userService.registerUser(user), HttpStatus.CREATED);
     }
 
-    // PUT - update more than one property
+    // Controller Mapping to update a user based on UserId
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         updatedUser.setUserId(id);
