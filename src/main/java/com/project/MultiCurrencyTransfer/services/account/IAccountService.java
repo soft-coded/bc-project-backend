@@ -14,4 +14,7 @@ public interface IAccountService {
   Account updateAccount(Account acc);
 
   List<Account> getAccountsByUserId(String userId);
+
+  Account deposit(String id, double amount);
+
 }

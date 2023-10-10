@@ -37,4 +37,11 @@ public class AccountServiceImpl implements IAccountService {
   public List<Account> getAccountsByUserId(String userId) {
     return accRepo.findByUserId(userId);
   }
+
+  @Override
+  public Account deposit(String id, double amount) {
+    Account acc = accRepo.findById(id).get();
+    acc.setBalance(acc.getBalance() + amount);
+    return accRepo.save(acc);
+  }
 }
